@@ -9,7 +9,7 @@ const ServiceDetails = () => {
   const [service, setService] = useState(null);
   const [bookingName, setBookingName] = useState("");
   const [bookingEmail, setBookingEmail] = useState("");
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetch("/data.json")
