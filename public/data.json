@@ -1,0 +1,74 @@
+[
+  {
+    "serviceId": 1,
+    "serviceName": "Winter Coat Fitting for Dogs",
+    "providerName": "PawCare Studio",
+    "providerEmail": "info@pawcare.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Custom coat fitting and warm outfit options to keep your dog comfortable in the cold. Our expert tailors measure your dog to ensure a perfect fit. Materials are winter-proof and hypoallergenic. Lightweight yet insulating fabrics. Adjustable straps for growing pups. Easy to wash and maintain. Fashionable colors available. Keeps dogs cozy during outdoor walks and activities. Ideal for small to large breeds.",
+    "image": "https://i.postimg.cc/vT4K8H4t/premium-photo-1663040477032-0cb4ee5402bc-w-600-auto-format-fit-crop-q-60-ixlib-rb-4-1.jpg",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 2,
+    "serviceName": "Pet Winter Grooming",
+    "providerName": "FurryFriends Care",
+    "providerEmail": "contact@furryfriends.com",
+    "price": 18,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Gentle grooming with warm water and winter-safe shampoo. Fur is dried properly to prevent chills. Nails are trimmed safely. Ears cleaned with care. Skin checked for dryness or irritation. Special moisturizing treatments applied if needed. Fur brushed to remove tangles and mats. Includes a winter-friendly cologne. Ensures your pet is healthy, clean, and ready for winter.",
+    "image": "https://i.postimg.cc/ht0R5vTz/pexels-photo-33252813.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 3,
+    "serviceName": "Winter Health Check-up",
+    "providerName": "PetWell Clinic",
+    "providerEmail": "hello@petwell.com",
+    "price": 40,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Full medical examination for pets to ensure winter readiness. Includes temperature, heart, and respiratory checks. Blood tests to detect deficiencies. Vaccinations updated if necessary. Weight monitoring and diet consultation. Checks for seasonal allergies or infections. Fur and skin examined thoroughly. Advice on supplements to boost immunity. Personalized recommendations for each pet. Ideal before winter outdoor activities.",
+    "image": "https://i.postimg.cc/cH2pnnGs/premium-photo-1731693607351-d4f74ac3f7c6-w-600-auto-format-fit-crop-q-60-ixlib-rb-4-1.jpg",
+    "category": "Health"
+  },
+  {
+    "serviceId": 4,
+    "serviceName": "Warm Bedding Setup",
+    "providerName": "CozyPet Home",
+    "providerEmail": "support@cozypet.com",
+    "price": 30,
+    "rating": 4.6,
+    "slotsAvailable": 5,
+    "description": "Soft thermal beds and blankets to keep pets warm at night. Materials are hypoallergenic. Easy to clean and maintain. Suitable for all sizes. Includes extra padding for small or senior pets. Non-slip bottoms for safety. Washable covers with cozy textures. Helps pets maintain body temperature during cold nights. Promotes restful sleep and comfort. Can be set indoors or in pet houses.",
+    "image": "https://i.postimg.cc/433q25J3/photo-1514888286974-6c03e2ca1dba-q-80-w-1143-auto-format-fit-crop-ixlib-rb-4-1.jpg",
+    "category": "Comfort"
+  },
+  {
+    "serviceId": 5,
+    "serviceName": "Winter Nutrition Plan",
+    "providerName": "HealthyPaws Nutrition",
+    "providerEmail": "plan@healthypaws.com",
+    "price": 22,
+    "rating": 4.9,
+    "slotsAvailable": 8,
+    "description": "A complete meal plan to boost immunity during the cold season. Nutrient-rich ingredients selected. Special supplements included for joints and fur. Personalized portions for each pet size. Seasonal fruits and veggies added. Easy-to-serve daily meals. Promotes energy and warmth. Supports digestive health. Helps maintain healthy weight. Encourages overall winter wellness.",
+    "image": "https://i.postimg.cc/Cxc68qbv/photo-1472491235688-bdc81a63246e-w-600-auto-format-fit-crop-q-60-ixlib-rb-4-1.jpg",
+    "category": "Food"
+  },
+  {
+    "serviceId": 6,
+    "serviceName": "Paw Protection Wax",
+    "providerName": "PetShield Store",
+    "providerEmail": "care@petshield.com",
+    "price": 12,
+    "rating": 4.5,
+    "slotsAvailable": 10,
+    "description": "Wax protection to prevent cracks from cold pavements. Easy to apply. Non-toxic and pet-safe ingredients. Moisturizes paw pads. Long-lasting effect. Protects from snow, ice, and salt. Ideal for winter walks. Can be applied daily if needed. Helps prevent infections and dryness. Keeps paws soft and healthy.",
+    "image": "https://i.postimg.cc/cJ6kBLmY/photo-1519052537078-e6302a4968d4-w-600-auto-format-fit-crop-q-60-ixlib-rb-4-1.jpg",
+    "category": "Care"
+  }
+]
