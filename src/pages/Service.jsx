@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const Service = () => {
   const [services, setServices] = useState([]);
@@ -21,7 +21,8 @@ const Service = () => {
       navigate("/auth/login");
       return;
     }
-    navigate(`/services/${id}`); // ✅ s আছে
+    toast.success("Redirecting to service details...");
+    navigate(`/services/${id}`);
   };
 
   return (
