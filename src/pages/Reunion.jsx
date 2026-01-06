@@ -1,10 +1,9 @@
-// src/pages/Reunion.jsx
 import React, { useState, useEffect } from "react";
 import { FaTimes, FaDownload, FaExpand } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Import your 20 images (replace with your own)
+// Images
 import img1 from "../assets/reunion/img1.jpg";
 import img2 from "../assets/reunion/img2.jpg";
 import img3 from "../assets/reunion/img3.jpg";
@@ -26,77 +25,75 @@ import img18 from "../assets/reunion/img18.jpg";
 import img19 from "../assets/reunion/img19.jpg";
 import img20 from "../assets/reunion/img20.jpg";
 
-const Reunion = () => {
-  const [images] = useState([
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img10,
-    img11,
-    img12,
-    img13,
-    img14,
-    img15,
-    img16,
-    img17,
-    img18,
-    img19,
-    img20,
-  ]);
+const images = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
+  img13,
+  img14,
+  img15,
+  img16,
+  img17,
+  img18,
+  img19,
+  img20,
+];
 
-  const [modalOpen, setModalOpen] = useState(false);
+const Reunion = () => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 900, once: true });
   }, []);
 
-  const openModal = (img) => {
-    setSelectedImg(img);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setSelectedImg(null);
-  };
-
   return (
-    <div className="min-h-screen py-10 px-4 bg-gradient-to-b from-purple-50 via-blue-50 to-pink-50">
+    <div className="min-h-screen py-12 px-4 bg-gray-100">
       <h1
-        className="text-3xl md:text-4xl font-bold text-center mb-10 text-purple-700"
+        className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-gray-800"
         data-aos="fade-down">
-        Reunion Gallery 🎉
+        🎉 Reunion Gallery
       </h1>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      {/* Image Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {images.map((img, idx) => (
           <div
             key={idx}
-            className="relative rounded-xl overflow-hidden shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl"
-            data-aos="fade-up"
-            data-aos-delay={idx * 50}>
+            className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all"
+            data-aos="zoom-in"
+            data-aos-delay={idx * 40}>
+            {/* Image */}
             <img
               src={img}
               alt={`Reunion ${idx + 1}`}
-              className="w-full h-40 object-cover"
+              className="w-full h-40 object-cover rounded-t-xl"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-25 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity">
+
+            {/* Buttons */}
+            <div className="flex gap-2 p-3">
               <button
-                onClick={() => openModal(img)}
-                className="mx-1 px-3 py-1 rounded-lg bg-purple-600 text-white flex items-center gap-2 hover:bg-purple-700 transition">
+                onClick={() => setSelectedImg(img)}
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg 
+                           bg-gray-800 text-white text-sm font-semibold 
+                           hover:bg-gray-900 transition">
                 <FaExpand /> View
               </button>
+
               <a
                 href={img}
                 download
-                className="mx-1 px-3 py-1 rounded-lg bg-blue-600 text-white flex items-center gap-2 hover:bg-blue-700 transition">
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg 
+                           bg-blue-600 text-white text-sm font-semibold 
+                           hover:bg-blue-700 transition">
                 <FaDownload /> Download
               </a>
             </div>
@@ -104,18 +101,22 @@ const Reunion = () => {
         ))}
       </div>
 
-      {/* Modal */}
-      {modalOpen && selectedImg && (
-        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-70">
-          <div className="relative max-w-3xl w-full mx-4">
+      {/* Full Image Modal */}
+      {selectedImg && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4">
+          <div className="relative max-w-4xl w-full">
             <img
               src={selectedImg}
-              alt="Selected"
-              className="w-full h-auto rounded-xl shadow-2xl"
+              alt="Full View"
+              className="w-full rounded-xl shadow-2xl animate__animated animate__fadeIn"
             />
+
             <button
-              onClick={closeModal}
-              className="absolute top-3 right-3 text-white text-2xl hover:text-purple-400 transition">
+              onClick={() => setSelectedImg(null)}
+              className="absolute -top-4 -right-4 w-10 h-10 
+                         flex items-center justify-center 
+                         bg-white rounded-full shadow 
+                         hover:bg-red-500 hover:text-white transition">
               <FaTimes />
             </button>
           </div>

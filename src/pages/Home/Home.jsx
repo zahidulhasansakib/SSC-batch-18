@@ -1,14 +1,13 @@
 // src/pages/Home/Home.jsx
-import { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-hot-toast";
 import HeroSlider from "../../components/Hero/HeroSlider";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "animate.css";
 
-// Import student images
+// Students Images
 import student1 from "../../assets/students/student1.jpg";
 import student2 from "../../assets/students/student2.jpg";
 import student3 from "../../assets/students/student3.jpg";
@@ -18,7 +17,14 @@ import student6 from "../../assets/students/student6.jpg";
 import student7 from "../../assets/students/student7.jpg";
 import student8 from "../../assets/students/student8.jpg";
 
-// Map imageKey to images
+// Teachers Images
+import teacher1 from "../../assets/teacher/teacher1.jpeg";
+import teacher2 from "../../assets/teacher/teacher2.jpeg";
+import teacher3 from "../../assets/teacher/teacher3.jpeg";
+import teacher4 from "../../assets/teacher/teacher4.jpeg";
+import teacher5 from "../../assets/teacher/teacher5.jpeg";
+import teacher6 from "../../assets/teacher/teacher6.jpeg";
+
 const studentImageMap = {
   student1,
   student2,
@@ -30,10 +36,50 @@ const studentImageMap = {
   student8,
 };
 
+const teachers = [
+ 
+  {
+    name: "Md Mostafa Kamal",
+    img: teacher1,
+    desc: "A highly respected educator, guiding students with wisdom and experience, inspiring a love for learning in every heart.",
+  },
+  {
+    name: "Md Jafor Ullah",
+    img: teacher2,
+    desc: "Renowned for dedication and mentorship, he nurtures young minds to achieve excellence and integrity in life.",
+  },
+  {
+    name: "MD Mofizul Islam",
+    img: teacher3,
+    desc: "A visionary teacher, who dedicated his life to educating and inspiring students. May Allah grant him eternal peace and Jannat, and may his legacy continue to inspire generations of learners.",
+  },
+  {
+    name: "Md Hadayet Ullah",
+    img: teacher4,
+    desc: "Known for his warmth and knowledge, he shapes future leaders with care, discipline, and empathy.",
+  },
+  {
+    name: "Abdul Hakim Bhuiyan",
+    img: teacher5,
+    desc: "A pillar of guidance, he fosters creativity and critical thinking, instilling confidence in every student he mentors.",
+  },
+  {
+    name: "Md Mubarak Hossain",
+    img: teacher6,
+    desc: "With unparalleled dedication, he inspires excellence and encourages students to embrace learning as a lifelong journey.",
+  },
+
+
+];
+
 const Home = () => {
   const navigate = useNavigate();
   const [students, setStudents] = useState([]);
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   // Fetch students JSON
   useEffect(() => {
@@ -43,21 +89,15 @@ const Home = () => {
       .catch((err) => console.error("Error fetching JSON:", err));
   }, []);
 
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
   return (
-    <div className="space-y-16 pt-24">
-      {" "}
-      {/* pt-24 for navbar spacing */}
+    <div className="space-y-16">
       {/* HERO SLIDER */}
       <HeroSlider />
+
       {/* STUDENT CARDS */}
       <div className="max-w-7xl mx-auto px-4">
         <h2
-          className="text-3xl font-bold text-center mb-8 animate__animated animate__fadeInDown"
+          className="text-3xl font-bold text-center mb-8"
           data-aos="fade-down">
           Featured Students
         </h2>
@@ -105,6 +145,45 @@ const Home = () => {
           </button>
         </div>
       </div>
+
+      {/* MEET OUR HONOURABLE TEACHERS */}
+      <section className="py-16 bg-gradient-to-b from-purple-50 via-blue-50 to-pink-50">
+        <h2
+          className="text-3xl md:text-4xl font-bold text-center mb-10 text-purple-700"
+          data-aos="fade-down">
+          Meet Our Honourable Teachers
+        </h2>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teachers.map((teacher, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col items-center p-5"
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}>
+              {/* Circular Image */}
+              <div className="w-60 h-60 mb-4">
+                <img
+                  src={teacher.img}
+                  alt={teacher.name}
+                  className="w-full h-full object-cover rounded-full border-4 border-purple-300 shadow-md"
+                />
+              </div>
+
+              {/* Card Body */}
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-purple-700">
+                  {teacher.name}
+                </h3>
+                <p className="text-indigo-500 font-semibold mb-2">
+                  Respected Teacher
+                </p>
+                <p className="text-gray-700 text-sm">{teacher.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };

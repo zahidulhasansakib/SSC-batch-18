@@ -73,6 +73,30 @@ const ServiceDetails = () => {
 
   if (!service) return <p className="text-center mt-20">Loading...</p>;
 
+  // Call button handler
+  const handleCall = () => {
+    if (!service?.whatsapp) {
+      toast.error("Phone number not available");
+      return;
+    }
+
+    window.location.href = `tel:+${service.whatsapp}`;
+  };
+
+  // WhatsApp chat handler
+  const handleWhatsAppChat = () => {
+    if (!service?.whatsapp) {
+      toast.error("WhatsApp number not available");
+      return;
+    }
+
+    const phone = service.whatsapp; // example: 8801745889900
+    const message = `Hello ${service.name}, I found you from SSC Batch website.`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="min-h-screen py-12 px-4 bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50">
       <div
@@ -119,20 +143,19 @@ const ServiceDetails = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-6">
           {/* Call Button */}
           <button
-            onClick={() => (window.location.href = `tel:${service.whatsapp}`)}
-            className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-2xl font-semibold hover:scale-105 transition-transform shadow-lg text-center">
+            onClick={handleCall}
+            className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 
+               text-white rounded-2xl font-semibold hover:scale-105 
+               transition-transform shadow-lg text-center">
             📞 Call Now
           </button>
 
           {/* WhatsApp Button */}
           <button
-            onClick={() =>
-              window.open(
-                `https://wa.me/${service.whatsapp.replace("+", "")}`,
-                "_blank"
-              )
-            }
-            className="flex-1 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-2xl font-semibold hover:scale-105 transition-transform shadow-lg text-center">
+            onClick={handleWhatsAppChat}
+            className="flex-1 py-3 bg-gradient-to-r from-green-500 to-green-700 
+               text-white rounded-2xl font-semibold hover:scale-105 
+               transition-transform shadow-lg text-center">
             💬 Chat on WhatsApp
           </button>
         </div>
@@ -143,9 +166,12 @@ const ServiceDetails = () => {
             More Info
           </h2>
           <p className="text-gray-700 whitespace-pre-line">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            auctor purus id diam fermentum, a tincidunt lorem blandit. Curabitur
-            vitae turpis vitae nunc dictum fermentum.
+            We are proud students of Perpeti High School, class of 2018. Our 18
+            batch will always cherish the memories, friendships, and lessons we
+            shared. Together we grew, learned, and laughed, shaping who we are
+            today. The spirit of our school and batch will remain in our hearts
+            forever. Here's to the bonds we made and the dreams we continue to
+            pursue!
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+  const [photoFile, setPhotoFile] = useState(null); // file from device
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -44,11 +44,18 @@ const Signup = () => {
     }
 
     try {
-      // Use default photo if empty or too long
-      const finalPhotoURL =
-        photoURL && photoURL.length < 500
-          ? photoURL
-          : "https://i.ibb.co/4pDNDk1/avatar.png";
+      // Default avatar
+      let finalPhotoURL = "https://i.ibb.co/4pDNDk1/avatar.png";
+
+      // If user uploaded a file, use it
+      if (photoFile) {
+        // For now, use local preview URL
+        finalPhotoURL = URL.createObjectURL(photoFile);
+
+        // In production, upload to storage (Firebase, etc.) and get URL
+        // Example:
+        // finalPhotoURL = await uploadToFirebase(photoFile)
+      }
 
       await emailSignup(name, email, password, finalPhotoURL);
       toast.success("Signup successful!");
@@ -64,6 +71,7 @@ const Signup = () => {
         <h2 className="text-3xl font-bold text-white text-center mb-6">
           Create Account
         </h2>
+
         <form onSubmit={handleSignup} className="space-y-5">
           {/* Name */}
           <input
@@ -85,14 +93,18 @@ const Signup = () => {
             required
           />
 
-          {/* Photo URL */}
-          <input
-            type="text"
-            placeholder="Photo URL (optional)"
-            className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-            value={photoURL}
-            onChange={(e) => setPhotoURL(e.target.value)}
-          />
+          {/* Photo Upload */}
+          <div>
+            <label className="block text-gray-300 mb-1">
+              Upload Photo (optional)
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setPhotoFile(e.target.files[0])}
+              className="w-full text-white file:bg-gray-700 file:text-white file:px-4 file:py-2 file:rounded-xl file:border-none file:cursor-pointer hover:file:bg-gray-600"
+            />
+          </div>
 
           {/* Password */}
           <div className="relative">

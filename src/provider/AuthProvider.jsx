@@ -108,50 +108,47 @@ const AuthProvider = ({ children }) => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  // Email/Password Signup
-  const emailSignup = (name, email, password, photoURL) => {
+  // ✅ Email Signup
+  const emailSignup = async (name, email, password, photoURL) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password).then(
-      (result) => {
-        return updateProfile(result.user, {
-          displayName: name,
-          photoURL,
-        }).then(() => {
-          setUser({ ...result.user });
-          setLoading(false);
-        });
-      }
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+
+    await updateProfile(result.user, {
+      displayName: name,
+      photoURL,
+    });
+
+    // ❌ manually setUser করা লাগবে না
+    setLoading(false);
+    return result;
+  };
+
+  // ✅ Email Login
+  const emailLogin = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password).finally(() =>
+      setLoading(false)
     );
   };
 
-  // Login
-  const emailLogin = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password).then((res) => {
-      setUser(res.user);
-      setLoading(false);
-    });
-  };
-
-  // Google login
+  // ✅ Google Login
   const googleLogin = () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider).then((res) => {
-      setUser(res.user);
-      setLoading(false);
-    });
+    return signInWithPopup(auth, googleProvider).finally(() =>
+      setLoading(false)
+    );
   };
 
-  // Logout
+  // ✅ Logout
   const logOut = () => {
     setLoading(true);
     return signOut(auth).finally(() => setLoading(false));
   };
 
-  // Auth state observer
+  // ✅ AUTH OBSERVER (MOST IMPORTANT)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      setUser(currentUser); // 🔥 always fresh & correct
       setLoading(false);
     });
     return () => unsubscribe();
@@ -159,7 +156,6 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
-    setUser,
     loading,
     emailSignup,
     emailLogin,

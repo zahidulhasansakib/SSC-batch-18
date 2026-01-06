@@ -1,10 +1,8 @@
-// src/pages/BiddayOnusthan.jsx
 import React, { useState, useEffect } from "react";
 import { FaTimes, FaDownload, FaExpand } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Import 15 images (replace with your own images)
 import img1 from "../assets/bidday/img1.jpg";
 import img2 from "../assets/bidday/img2.jpg";
 import img3 from "../assets/bidday/img3.jpg";
@@ -77,16 +75,19 @@ const BiddayOnusthan = () => {
               alt={`Bidday ${idx + 1}`}
               className="w-full h-40 object-cover"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-25 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity">
+
+            {/* Buttons below the image */}
+            <div className="flex justify-center gap-2 mt-2 mb-4">
               <button
                 onClick={() => openModal(img)}
-                className="mx-1 px-3 py-1 rounded-lg bg-orange-600 text-white flex items-center gap-2 hover:bg-orange-700 transition">
+                className="px-4 py-2 rounded-lg bg-orange-600 text-white flex items-center gap-2 hover:bg-orange-700 transition">
                 <FaExpand /> View
               </button>
+
               <a
                 href={img}
                 download
-                className="mx-1 px-3 py-1 rounded-lg bg-yellow-600 text-white flex items-center gap-2 hover:bg-yellow-700 transition">
+                className="px-4 py-2 rounded-lg bg-yellow-600 text-white flex items-center gap-2 hover:bg-yellow-700 transition">
                 <FaDownload /> Download
               </a>
             </div>
