@@ -10,6 +10,9 @@ import Signup from '../pages/Signup';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import ServiceDetails from '../pages/ServiceDetails';
 import ForgotPassword from '../pages/ForgotPassword';
+import Gallery from '../pages/Gallery';
+import Reunion from '../pages/Reunion';
+import BiddayOnusthan from '../pages/BiddayOnusthan';
 
 
 
@@ -41,6 +44,30 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/gallery",
+        element: (
+          <PrivateRoute>
+            <Gallery></Gallery>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/gallery/reunion",
+        element: (
+          <PrivateRoute>
+            <Reunion />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/gallery/bidayonusthan",
+        element: (
+          <PrivateRoute>
+            <BiddayOnusthan />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/auth/login",
         element: <Login></Login>,
       },
@@ -49,12 +76,9 @@ export const router = createBrowserRouter([
         element: <Signup></Signup>,
       },
       {
-        
-  path: "/auth/forgot-password",
-  element: <ForgotPassword />,
-
-
-      }
+        path: "/auth/forgot-password",
+        element: <ForgotPassword />,
+      },
     ],
   },
 ]);
